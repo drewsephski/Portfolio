@@ -45,6 +45,72 @@ yarn dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Deployment
+
+### Deploy to Vercel
+
+1. Install the Vercel CLI (optional):
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Deploy your project:
+```bash
+vercel
+```
+
+Or deploy directly from GitHub:
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click "New Project"
+3. Select your GitHub repository
+4. Click "Deploy"
+
+### Deploy to Netlify
+
+1. Install the Netlify CLI (optional):
+```bash
+npm install -g netlify-cli
+```
+
+2. Login to Netlify:
+```bash
+netlify login
+```
+
+3. Deploy your project:
+```bash
+netlify deploy
+```
+
+Or deploy directly from GitHub:
+1. Go to [Netlify Dashboard](https://app.netlify.com/)
+2. Click "New site from Git"
+3. Select "GitHub" as your repository provider
+4. Connect your GitHub account
+5. Select this repository
+6. Click "Deploy site"
+
+### Deployment Configuration
+
+For both platforms, ensure your repository has these environment variables set:
+
+- `NEXT_PUBLIC_VERCEL_ENV`: Automatically set by Vercel
+- `NEXT_PUBLIC_VERCEL_URL`: Automatically set by Vercel
+- `NODE_VERSION`: Node.js version (18.x recommended)
+
+The deployment process will automatically handle:
+- Building the Next.js application
+- Optimizing assets
+- Setting up proper routing
+- Configuring SSL certificates
+
+After deployment, your site will be available at your chosen domain (e.g., `yourname.vercel.app` or `yourname.netlify.app`).
+
 ## Project Structure
 
 ```
