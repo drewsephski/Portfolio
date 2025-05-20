@@ -10,7 +10,7 @@ interface LenisProps {
 }
 
 function SmoothScroll({ children, isInsideModal = false }: LenisProps) {
-  const lenis = useLenis(({ scroll }) => {
+  const lenis = useLenis(() => { // Removed unused 'scroll'
     // called every scroll
   });
 
@@ -19,7 +19,7 @@ function SmoothScroll({ children, isInsideModal = false }: LenisProps) {
       lenis?.stop();
       lenis?.start();
     });
-  }, []);
+  }, [lenis]);
 
   return (
     <ReactLenis

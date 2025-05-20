@@ -7,7 +7,7 @@ import {
   MessageSquare,
   ShoppingBag,
 } from "lucide-react"; // Import necessary icons
-import Image from "next/image"; // Import Image component
+// import Image from "next/image"; // Import Image component - Unused
 import React from "react";
 
 import AnimatedBackground from "@/components/animated-background";

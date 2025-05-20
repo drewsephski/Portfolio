@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 const LINKS = [
   { name: "Projects", href: "/projects" },

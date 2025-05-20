@@ -3,6 +3,7 @@
  */
 
 "use client";
+import { gsap } from "gsap";
 import React, {
   useCallback,
   useEffect,
@@ -10,11 +11,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { gsap } from "gsap";
-import { cn } from "@/lib/utils";
-import { useMouse } from "@/hooks/use-mouse";
-import { usePreloader } from "../preloader";
+
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { useMouse } from "@/hooks/use-mouse";
+
+import { cn } from "@/lib/utils";
+
+import { usePreloader } from "../preloader";
 
 // Gsap Ticker Function
 function useTicker(callback: any, paused: boolean) {
@@ -92,7 +95,7 @@ function ElasticCursor() {
     set.sx = gsap.quickSetter(jellyRef.current, "scaleX");
     set.sy = gsap.quickSetter(jellyRef.current, "scaleY");
     set.width = gsap.quickSetter(jellyRef.current, "width", "px");
-  }, []);
+  }, [set]);
 
   // Start Animation loop
   const loop = useCallback(() => {
@@ -112,7 +115,7 @@ function ElasticCursor() {
     } else {
       set.r(0);
     }
-  }, [isHovering, isLoading]);
+  }, [isHovering, isLoading, set, vel, pos]);
 
   const [cursorMoved, setCursorMoved] = useState(false);
   // Run on Mouse Move
@@ -177,7 +180,7 @@ function ElasticCursor() {
     return () => {
       if (!isLoading) window.removeEventListener("mousemove", setFromEvent);
     };
-  }, [isLoading]);
+  }, [isLoading, loop, pos, vel, cursorMoved, isMobile]);
 
   useEffect(() => {
     if (!jellyRef.current) return;

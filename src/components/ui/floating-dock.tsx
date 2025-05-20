@@ -1,12 +1,3 @@
-import React from 'react';
-/**
- * Note: Use position fixed according to your needs
- * Desktop navbar is better positioned at the bottom
- * Mobile navbar is better positioned at bottom right.
- **/
-
-import { cn } from "@/lib/utils";
-// import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
   AnimatePresence,
   MotionValue,
@@ -16,18 +7,25 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { opacity } from "../header/anim";
+import React, { useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
+// import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+
+/**
+ * Note: Use position fixed according to your needs
+ * Desktop navbar is better positioned at the bottom
+ * Mobile navbar is better positioned at bottom right.
+ **/
 
 export const FloatingDock = ({
   items,
   desktopClassName,
-  mobileClassName,
+  // mobileClassName, // Unused as FloatingDockMobile is commented out
 }: {
   items: { title: string; icon: React.ReactNode }[];
   desktopClassName?: string;
-  mobileClassName?: string;
+  mobileClassName?: string; // Prop definition can remain, but usage is commented
 }) => {
   return (
     <>
@@ -37,59 +35,59 @@ export const FloatingDock = ({
   );
 };
 
-const FloatingDockMobile = ({
-  items,
-  className,
-}: {
-  items: { title: string; icon: React.ReactNode }[];
-  className?: string;
-}) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className={cn("relative block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <div
-                  key={item.title}
-                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {/* <button
-        onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
-      >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-      </button> */}
-    </div>
-  );
-};
+// const FloatingDockMobile = ({
+//   items,
+//   className,
+// }: {
+//   items: { title: string; icon: React.ReactNode }[];
+//   className?: string;
+// }) => {
+//   const [open, _setOpen] = useState(false); // setOpen is unused
+//   return (
+//     <div className={cn("relative block md:hidden", className)}>
+//       <AnimatePresence>
+//         {open && (
+//           <motion.div
+//             layoutId="nav"
+//             className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
+//           >
+//             {items.map((item, idx) => (
+//               <motion.div
+//                 key={item.title}
+//                 initial={{ opacity: 0, y: 10 }}
+//                 animate={{
+//                   opacity: 1,
+//                   y: 0,
+//                 }}
+//                 exit={{
+//                   opacity: 0,
+//                   y: 10,
+//                   transition: {
+//                     delay: idx * 0.05,
+//                   },
+//                 }}
+//                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+//               >
+//                 <div
+//                   key={item.title}
+//                   className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
+//                 >
+//                   <div className="h-4 w-4">{item.icon}</div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//       {/* <button
+//         onClick={() => _setOpen(!open)}
+//         className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+//       >
+//         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+//       </button> */}
+//     </div>
+//   );
+// };
 
 const FloatingDockDesktop = ({
   items,
@@ -100,7 +98,7 @@ const FloatingDockDesktop = ({
 }) => {
   let mouseX = useMotionValue(Infinity);
   const [showHint, setShowHint] = useState(true);
-  const timer = useRef<NodeJS.Timeout>();
+  const timer = useRef<ReturnType<typeof setTimeout>>();
   const controls = useAnimation();
   useEffect(() => {
     if (showHint) {
@@ -119,11 +117,14 @@ const FloatingDockDesktop = ({
     } else {
       controls.stop();
     }
+    const currentTimer = timer.current;
     return () => {
       controls.stop();
-      clearInterval(timer.current);
+      if (currentTimer) {
+        clearInterval(currentTimer);
+      }
     };
-  }, [showHint]);
+  }, [showHint, controls]);
   return (
     <div className="relative h-fit flex items-center justify-center">
       <motion.div

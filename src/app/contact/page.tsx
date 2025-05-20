@@ -2,10 +2,6 @@ import React from "react";
 
 function Page() {
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    console.log(event)
-  }
   return (
     <section>
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">

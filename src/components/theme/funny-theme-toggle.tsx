@@ -1,14 +1,16 @@
 "use client";
 
-import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useToast } from "../ui/use-toast";
-import { themeDisclaimers } from "@/data/constants";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { useToast } from "../ui/use-toast";
+
+import { themeDisclaimers } from "@/data/constants";
+import { cn } from "@/lib/utils";
+
 
 export default function FunnyThemeToggle({
   className,

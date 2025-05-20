@@ -1,8 +1,8 @@
 import Spline from "@splinetool/react-spline";
-import { Application } from "@splinetool/runtime";
+// import { Application } from "@splinetool/runtime"; // Unused
 import React, { Suspense } from "react";
 
-import NyanCat from "@/components/nyan-cat";
+// import NyanCat from "@/components/nyan-cat"; // Unused
 
 const NotFoundPage = () => {
   return (

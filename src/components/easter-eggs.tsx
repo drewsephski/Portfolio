@@ -1,6 +1,6 @@
 "use client";
-import { AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+// import { AnimatePresence } from "framer-motion"; // Unused
+import React, { useEffect } from "react"; // Removed unused useState
 
 import { useDevToolsOpen } from "@/hooks/use-devtools-open";
 

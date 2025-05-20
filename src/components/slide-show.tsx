@@ -1,27 +1,18 @@
-import React from "react";
 // @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import React, { useState } from "react";
 
 import "@splidejs/react-splide/css";
-
-import Image from "next/image";
 
 import {
   AnimatedModal,
   AnimatedModalContent,
   AnimatedModalTrigger,
 } from "@/components/ui/animated-modal";
-
-import {
-  DialogDescription,
-  DialogHeader,
-} from "./ui/dialog";
-
-import { Button } from "./ui/button";
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+// import { Button } from "./ui/button"; // Unused
+import { DialogDescription, DialogHeader } from "./ui/dialog";
 
 const SlideShow = ({ images }: { images: string[] }) => {
   const [hovering, setHovering] = useState(false);

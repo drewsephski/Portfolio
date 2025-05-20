@@ -37,7 +37,7 @@ export default function Body({
   }, [params]);
 
   const getChars = (word: string) => {
-    let chars: JSX.Element[] = [];
+    let chars: React.JSX.Element[] = [];
     word.split("").forEach((char, i) => {
       chars.push(
         <motion.span

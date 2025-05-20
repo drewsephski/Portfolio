@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import type { Timeout } from "node";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
@@ -257,6 +258,8 @@ const AnimatedBackground = () => {
         teardownKeyboard.pause();
       }
       if (activeSection === "skills") {
+        splineApp.setVariable("heading", selectedSkill?.label || "");
+        splineApp.setVariable("desc", selectedSkill?.shortDescription || "");
       } else {
         splineApp.setVariable("heading", "");
         splineApp.setVariable("desc", "");

@@ -1,13 +1,14 @@
-import React from 'react'; // Added React import to prevent linting errors
-import { BentoGrid, type BentoItem } from './bento-grid'; // Corrected path and type
 import { // Ensure these icons are used if this demo component is used, or similar ones for actual data
     CheckCircle,
-    Clock,
+    // Clock, // Unused
     Star,
     TrendingUp,
     Video,
     Globe,
 } from "lucide-react";
+import React from 'react'; // Added React import to prevent linting errors
+
+import { BentoGrid, type BentoItem } from './bento-grid'; // Corrected path and type
 
 const itemsSample: BentoItem[] = [
     {

@@ -1,7 +1,8 @@
-import { EmailTemplate } from "@/components/email-template";
-import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";
+
+import { EmailTemplate } from "@/components/email-template";
+import { config } from "@/data/config";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

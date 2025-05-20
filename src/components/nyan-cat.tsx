@@ -1,12 +1,13 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import {
   AnimatePresence,
   motion,
-  animate,
+  // animate, // unused
   useAnimationControls,
 } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 const getRandomHeight = () => {
   return `${Math.random() * 100}vh`;
@@ -77,7 +78,7 @@ const AnimatedDiv = ({
       y: randY,
       transition: { duration: 5, ease: "linear" },
     });
-  }, [controls]);
+  }, [controls, randY]);
 
   const handlePause = () => {
     onClick();
@@ -91,6 +92,7 @@ const AnimatedDiv = ({
       onAnimationComplete={onCompleted}
       onClick={handlePause}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/assets/nyan-cat.gif"
         className={cn("fixed z-10 h-40 w-auto")}

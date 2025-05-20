@@ -1,9 +1,12 @@
-import React from "react";
 import Link from "next/link";
-import { footer } from "./config";
-import { Button } from "../ui/button";
-import SocialMediaButtons from "../social/social-media-icons";
+import React from "react";
+
 import { config } from "@/data/config";
+
+import SocialMediaButtons from "../social/social-media-icons";
+import { Button } from "../ui/button";
+
+import { footer } from "./config";
 
 function Footer() {
   const year = new Date().getFullYear();

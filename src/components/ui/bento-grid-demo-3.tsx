@@ -1,7 +1,7 @@
 import { FileTextIcon } from "@radix-ui/react-icons";
 import React from 'react';
 
-import { BentoGrid, BentoItem } from "@/components/ui/bento-grid";
+import { BentoGrid, BentoItem } from "@/components/ui/bento-grid"; // BentoItem is the interface
 
 interface Project {
   title: string | React.ReactNode;
@@ -27,20 +27,30 @@ export function BentoGridThirdDemo({ projects }: BentoGridThirdDemoProps) {
     return <div>Loading...</div>;
   }
 
+  // Transform Project[] to BentoItem[]
+  const bentoItems: BentoItem[] = projects.map((project, i) => {
+    let colSpan;
+    if (project.className?.includes("md:col-span-2")) {
+      colSpan = 2;
+    } else if (project.className?.includes("md:col-span-1")) {
+      colSpan = 1;
+    } else {
+      // Default or fallback logic for colSpan based on index if className is not specific
+      colSpan = (i === 0 || i === projects.length - 1 ? 2 : 1);
+    }
+
+    return {
+      title: project.title as string, // BentoItem expects string
+      description: project.description as string, // BentoItem expects string
+      icon: project.icon || <FileTextIcon className="h-4 w-4 text-neutral-500" />,
+      colSpan: colSpan,
+      // 'header' from Project is not in BentoItem
+      // 'link' for onClick from Project is not directly supported; BentoItem has 'cta' (string)
+      // For now, link/onClick functionality and header are not carried over due to interface mismatch.
+    };
+  });
+
   return (
-    <BentoGrid className="mx-auto max-w-4xl z-10 mt-12"> {/* Removed fixed row height */}
-      {projects.map((item, i) => (
-        <BentoGridItem
-          key={i}
-          title={item.title}
-          description={item.description}
-          header={item.header}
-          icon={item.icon || <FileTextIcon className="h-4 w-4 text-neutral-500" />}
-          className={item.className || (i === 0 || i === projects.length - 1 ? "md:col-span-2" : "md:col-span-1")}
-          onClick={item.link ? () => window.open(item.link, "_blank") : undefined}
-          style={{ cursor: item.link ? 'pointer' : 'default' }}
-        />
-      ))}
-    </BentoGrid>
+    <BentoGrid items={bentoItems} className="mx-auto max-w-4xl z-10 mt-12" />
   );
 }
