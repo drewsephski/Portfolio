@@ -1,74 +1,68 @@
 # 🚀 My Portfolio Website
 
-Welcome to the repository for my personal portfolio website! This is where I showcase my skills, projects, and a bit of my personality through jaw-dropping 3D animations, slick interactions, and fluid motion. If you're into creative web design, you're in the right place.
+## **3D Animations Portfolio**
 
-![Portfolio Preview](https://github.com/Naresh-Khatri/Portfolio/blob/main/public/assets/projects-screenshots/portfolio/landing.png?raw=true)
+A modern, interactive portfolio built with cutting-edge web technologies and featuring smooth animations and real-time interactions.
 
-## 🔥 Features
+- Interactive 3D animations using Spline
+- Smooth scrolling with Lenis
+- Real-time cursor tracking with Socket.IO
+- Modern UI components with Shadcn UI
+- Responsive design with Tailwind CSS
+- Type-safe with TypeScript
+- Optimized performance with Next.js
 
-- **3D Animations**: Custom-made interactive keyboard using Spline with skills as keycaps that reveal titles and descriptions on hover.
-- **Slick Interactions**: Powered by GSAP and Framer Motion for smooth animations on scroll, hover, and element reveal.
-- **Space Theme**: Particles on a dark background to simulate a cosmic environment, making the experience out of this world.
-- **Responsive Design**: Fully responsive across all devices to ensure the best user experience.
-- **Innovative Web Design**: Combining creativity with functionality to push the boundaries of modern web design.
+## Technologies
 
-## 🛠️ Tech Stack
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI
+- **Animation**: Framer Motion
+- **3D**: Spline Tool
+- **Real-time**: Socket.IO
+- **Scrolling**: Lenis
+- **State Management**: React Context
+- **Development Tools**: ESLint, Prettier
 
-- **Frontend**: Next.js, React, Tailwind CSS, Shadcn, Aceternity UI
-- **Animations**: GSAP, Framer Motion, Spline Runtime
-- **Misc**: Resend, Socketio, Zod
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14+)
-- npm or yarn
-
-### Installation
+## Getting Started
 
 1. Clone the repository:
+```bash
+git clone https://github.com/drewsephski/Portfolio.git
+cd Portfolio
+```
 
-    ```bash
-    git clone https://github.com/Naresh-Khatri/Portfolio.git
-    ```
+2. Install dependencies:
+```bash
+yarn install
+```
 
-2. Navigate to the project directory:
+3. Start the development server:
+```bash
+yarn dev
+```
 
-    ```bash
-    cd Portfolio
-    ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-3. Install dependencies:
+## Project Structure
 
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+```
+src/
+├── components/        # React components
+├── contexts/         # React Context providers
+├── data/            # Static data and configurations
+├── hooks/           # Custom React hooks
+├── types/           # TypeScript type definitions
+└── utils/           # Utility functions
+```
 
-4. Run the development server:
+## License
 
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+MIT License - feel free to use this code as a reference for your own projects.
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the magic!
+## Author
 
-## 🚀 Deployment
-
-This site is deployed on Vercel. For your own deployment, follow these steps:
-
-1. Push your code to a GitHub repository.
-2. Connect your repository to Vercel.
-3. Vercel will handle the deployment process.
-
-## 🤝 Contributing
-
-If you'd like to contribute or suggest improvements, feel free to open an issue or submit a pull request. All contributions are welcome!
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+Drew Sepeczi
+- GitHub: [drewsephski](https://github.com/drewsephski)
+- Portfolio: [drewsephski.vercel.app](https://drewsephski.vercel.app)
