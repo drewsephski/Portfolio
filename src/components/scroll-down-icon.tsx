@@ -1,44 +1,44 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+import React from "react";
+gsap.registerPlugin(ScrollTrigger);
 
 const ScrollDownIcon = () => {
-  const [show, setShow] = useState(true);
+  const iconRef = useRef(null);
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 10) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
+    const icon = iconRef.current;
+    if (!icon) return;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: icon,
+        start: "top bottom",
+        end: "+=300",
+        scrub: true,
+        toggleActions: "play none none reverse",
+      },
     });
-  });
+    tl.to(icon, {
+      y: 40,
+      opacity: 0,
+      scale: 0.7,
+      duration: 1.2,
+      ease: "power2.inOut",
+    });
+    return () => {
+      if (tl) tl.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-          className="w-fit min-h-[50px] p-1 border-2 rounded-full border-gray-500 dark:border-white "
-        >
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: [0, 25], opacity: [1, 0] }}
-            transition={{
-              duration: 1,
-              ease: "easeOut",
-              repeat: Infinity,
-              repeatDelay: 1,
-            }}
-            className="w-3 h-3 rounded-full bg-gray-500 dark:bg-white"
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      ref={iconRef}
+      className="w-fit min-h-[50px] p-1 border-2 rounded-full border-gray-500 dark:border-white fixed left-1/2 -translate-x-1/2 bottom-10 z-50 bg-white/80 dark:bg-black/60 shadow-lg"
+    >
+      <div className="w-3 h-3 rounded-full bg-gray-500 dark:bg-white animate-bounce" />
+    </div>
   );
 };
 

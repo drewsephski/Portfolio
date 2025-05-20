@@ -1,17 +1,20 @@
+import { motion, HTMLMotionProps } from "framer-motion"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  HTMLMotionProps<"div"> // Use HTMLMotionProps for correct Framer Motion prop typing
 >(({ className, ...props }, ref) => (
-  <div
+  <motion.div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out", // Added transition for smooth shadow
       className
     )}
+    whileHover={{ scale: 1.03, rotateX: -2, rotateY: 2, boxShadow: "0px 10px 20px -5px rgba(0,0,0,0.1)" }} // Subtle 3D tilt and enhanced shadow on hover
+    transition={{ type: "spring", stiffness: 300, damping: 20 }} // Spring transition for hover effect
     {...props}
   />
 ))

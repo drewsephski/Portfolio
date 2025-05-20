@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black } from "next/font/google";
+import { Archivo_Black } from "next/font/google";
 import "./globals.css";
-import ElasticCursor from "@/components/ui/ElasticCursor";
-import Particles from "@/components/Particles";
-import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
+import React from "react";
+
+import EasterEggs from "@/components/easter-eggs";
+import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
+import Particles from "@/components/Particles";
+import Preloader from "@/components/preloader";
+import RemoteCursors from "@/components/realtime/remote-cursors";
+import { ThemeProvider } from "@/components/theme-provider";
+import ElasticCursor from "@/components/ui/ElasticCursor";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Footer from "@/components/footer/footer";
-import Script from "next/script";
-import Preloader from "@/components/preloader";
-import EasterEggs from "@/components/easter-eggs";
 import { config } from "@/data/config";
-import SocketContextProvider from "@/contexts/socketio";
-import RemoteCursors from "@/components/realtime/remote-cursors";
+
 
 export const metadata: Metadata = {
   title: config.title,
@@ -77,14 +79,12 @@ export default function RootLayout({
             quantity={100}
           />
           <Preloader>
-            <SocketContextProvider>
               <RemoteCursors />
               <TooltipProvider>
                 <Header />
                 {children}
                 <Footer />
               </TooltipProvider>
-            </SocketContextProvider>
             <Toaster />
             <EasterEggs />
             <ElasticCursor />

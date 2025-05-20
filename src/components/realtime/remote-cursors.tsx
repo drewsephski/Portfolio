@@ -1,12 +1,14 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
+import { MousePointer2 } from "lucide-react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { SocketContext, User, UserMap } from "@/contexts/socketio";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { useMouse } from "@/hooks/use-mouse";
 import { useThrottle } from "@/hooks/use-throttle";
-import { MousePointer2 } from "lucide-react";
-import React, { useContext, useEffect, useRef, useState } from "react";
 
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { useMediaQuery } from "@/hooks/use-media-query";
+
 
 // TODO: add clicking animation
 // TODO: listen to socket disconnect
@@ -39,7 +41,7 @@ const RemoteCursors = () => {
     return () => {
       socket.off("cursor-changed");
     };
-  }, [socket, isMobile]);
+  }, [socket, isMobile, setUsers]);
   const handleMouseMove = useThrottle((x, y) => {
     socket?.emit("cursor-change", {
       pos: { x, y },
@@ -49,7 +51,7 @@ const RemoteCursors = () => {
   useEffect(() => {
     if (isMobile) return;
     handleMouseMove(x, y);
-  }, [x, y, isMobile]);
+  }, [x, y, isMobile, handleMouseMove]);
   const users = Array.from(_users.values());
   return (
     <div className="h-0 z-10 relative">

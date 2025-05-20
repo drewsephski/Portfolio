@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import styles from "./style.module.scss";
-import { blur, translate } from "../../anim";
-import { Link as LinkType } from "@/types";
-import { cn } from "@/lib/utils";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import { cn } from "@/lib/utils";
+import { Link as LinkType } from "@/types";
+
+import { blur, translate } from "../../anim";
+
+import styles from "./style.module.scss";
 
 interface SelectedLink {
   isActive: boolean;

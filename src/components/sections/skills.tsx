@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import { BoxReveal } from "../reveal-animations";
+
 import { cn } from "@/lib/utils";
+
+import { BoxReveal } from "../reveal-animations";
 
 const SkillsSection = () => {
   return (

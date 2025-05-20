@@ -1,4 +1,7 @@
 "use client";
+import { AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import React from "react";
 import {
   useState,
   useEffect,
@@ -7,10 +10,10 @@ import {
   useContext,
   useRef,
 } from "react";
-import { AnimatePresence } from "framer-motion";
+
 
 import Loader from "./loader";
-import gsap from "gsap";
+
 
 type PreloaderContextType = {
   isLoading: boolean;
@@ -22,22 +25,21 @@ const INITIAL: PreloaderContextType = {
   loadingPercent: 0,
   bypassLoading: () => {},
 };
-export const preloaderContext = createContext<PreloaderContextType>(INITIAL);
+export const PreloaderContext = createContext<PreloaderContextType>(INITIAL);
 
 type PreloaderProps = {
   children: ReactNode;
-  disabled?: boolean;
 };
 
 export const usePreloader = () => {
-  const context = useContext(preloaderContext);
+  const context = useContext(PreloaderContext);
   if (!context) {
     throw new Error("usePreloader must be used within a PreloaderProvider");
   }
   return context;
 };
 const LOADING_TIME = 2.5;
-function Preloader({ children, disabled = false }: PreloaderProps) {
+function Preloader({ children }: PreloaderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingPercent, setLoadingPercent] = useState(0);
   const loadingTween = useRef<gsap.core.Tween>();
@@ -66,12 +68,12 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
   }, []);
 
   return (
-    <preloaderContext.Provider
+    <PreloaderContext.Provider
       value={{ isLoading, bypassLoading, loadingPercent }}
     >
       <AnimatePresence mode="wait">{isLoading && <Loader />}</AnimatePresence>
       {children}
-    </preloaderContext.Provider>
+    </PreloaderContext.Provider>
   );
 }
 

@@ -1,18 +1,24 @@
+import React from "react";
 // @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+
 import { motion } from "framer-motion";
 
 import "@splidejs/react-splide/css";
 
 import Image from "next/image";
+
 import {
-  Dialog,
-  DialogContent,
+  AnimatedModal,
+  AnimatedModalContent,
+  AnimatedModalTrigger,
+} from "@/components/ui/animated-modal";
+
+import {
   DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
+
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -34,17 +40,17 @@ const SlideShow = ({ images }: { images: string[] }) => {
       <SplideTrack>
         {images.map((image, idx) => (
           <SplideSlide key={idx} className="flex items-center">
-            <Dialog>
-              <DialogTrigger
+            <AnimatedModal>
+              <AnimatedModalTrigger
                 className="relative"
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
               >
                 <Image
                   src={image}
-                  alt="screenshot"
-                  width={1000}
-                  height={1000}
+                  alt={`Screenshot: ${image.split("/").pop()}`}
+                  width={800}
+                  height={800}
                   className="w-full rounded-lg h-auto"
                 />
                 <AnimatePresence>
@@ -59,8 +65,8 @@ const SlideShow = ({ images }: { images: string[] }) => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </DialogTrigger>
-              <DialogContent className="min-w-[90vw] h-[90vh] bg-transparent outline-none border-none p-0 m-0">
+              </AnimatedModalTrigger>
+              <AnimatedModalContent className="min-w-[90vw] h-[90vh] bg-transparent outline-none border-none p-0 m-0">
                 <DialogHeader className="w-full">
                   {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}
                   <DialogDescription>
@@ -69,14 +75,14 @@ const SlideShow = ({ images }: { images: string[] }) => {
                 </DialogHeader>
                 <Image
                   src={image}
-                  alt="screenshot"
-                  width={1000}
-                  height={1000}
+                  alt={`Screenshot: ${image.split("/").pop()}`}
+                  width={800}
+                  height={800}
                   className="w-full"
                   style={{ objectFit: "contain", width: "100vw" }}
                 />
-              </DialogContent>
-            </Dialog>
+              </AnimatedModalContent>
+            </AnimatedModal>
           </SplideSlide>
         ))}
       </SplideTrack>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { addListener, launch, stop } from "devtools-detector";
+import { useEffect, useState } from "react";
 
 export const useDevToolsOpen = () => {
   const [isDevToolsOpen, setIsDevToolsOpen] = useState(false);

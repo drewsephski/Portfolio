@@ -1,13 +1,15 @@
-import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import styles from "./style.module.scss";
+import React from "react";
+
 import { opacity } from "../../anim";
-import { cn } from "@/lib/utils";
+
+import styles from "./style.module.scss";
 
 interface IndexProps {
   src: string;
   isActive: boolean;
+  alt: string;
 }
 
 const Index: React.FC<IndexProps> = ({ src, isActive }) => {
@@ -23,8 +25,8 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
         width={400}
         height={400}
         className="my-32 w-full h-auto object-cover"
-        alt={"Image"}
-        // priority={true}
+        alt={"Navigation preview image"}
+        priority={true}
       />
     </motion.div>
   );

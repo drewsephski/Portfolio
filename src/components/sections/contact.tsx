@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import React from "react";
+
 import {
   Card,
   CardContent,
@@ -8,10 +10,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import ContactForm from "../ContactForm";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { config } from "@/data/config";
+import { cn } from "@/lib/utils";
+
+import ContactForm from "../ContactForm";
+
 const ContactSection = () => {
   return (
     <section id="contact" className="min-h-screen max-w-7xl mx-auto ">
@@ -35,6 +38,7 @@ const ContactSection = () => {
               Please contact me directly at{" "}
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 href={`mailto:${config.email}`}
                 className="text-gray-200 cursor-can-hover rounded-lg"
               >
@@ -46,6 +50,30 @@ const ContactSection = () => {
           <CardContent>
             <ContactForm />
           </CardContent>
+          <CardFooter>
+            <CardTitle className="text-4xl">Socials</CardTitle>
+            <CardDescription>
+              You can find me on{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={config.social.github}
+                className="text-gray-200 cursor-can-hover rounded-lg"
+              >
+                Github
+              </a>{" "}
+              and{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={config.social.linkedin}
+                className="text-gray-200 cursor-can-hover rounded-lg"
+              >
+                LinkedIn
+              </a>
+              .
+            </CardDescription>
+          </CardFooter>
         </Card>
       </div>
     </section>

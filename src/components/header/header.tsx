@@ -1,15 +1,19 @@
-"use client";
-import { useState } from "react";
+"use client"
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import styles from "./style.module.scss";
-import { opacity, background } from "./anim";
-import Nav from "./nav";
+import React from "react";
+import { useState } from "react";
+
+import { config } from "@/data/config";
 import { cn } from "@/lib/utils";
+
 import FunnyThemeToggle from "../theme/funny-theme-toggle";
 import { Button } from "../ui/button";
-import { config } from "@/data/config";
-import OnlineUsers from "../realtime/online-users";
+
+import { opacity, background } from "./anim";
+import Nav from "./nav";
+import styles from "./style.module.scss";
+
 
 interface HeaderProps {
   loader?: boolean;
@@ -53,7 +57,6 @@ const Header = ({ loader }: HeaderProps) => {
           </Button>
         </Link>
 
-        <OnlineUsers />
         <FunnyThemeToggle className="w-6 h-6 mr-4" />
         <Button
           variant={"ghost"}

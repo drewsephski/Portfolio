@@ -1,13 +1,16 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./style.module.scss";
-import { height } from "../anim";
-import Body from "./body/body";
-import Footer from "./footer/footer";
-import Image from "./image/image";
+import React from "react";
+import { useState } from "react";
+
 
 import { links } from "@/components/header/config";
 import { cn } from "@/lib/utils";
+
+import { height } from "../anim";
+
+import Body from "./body/body";
+import Image from "./image/image";
+import styles from "./style.module.scss";
 
 interface IndexProps {
   setIsActive: (isActive: boolean) => void;
@@ -40,13 +43,12 @@ const Index: React.FC<IndexProps> = ({ setIsActive }) => {
             setSelectedLink={setSelectedLink}
             setIsActive={setIsActive}
           />
-          {/* <Footer /> */}
         </div>
         <Image
           src={links[selectedLink.index].thumbnail}
+          alt={`Thumbnail for ${links[selectedLink.index].title}`}
           isActive={selectedLink.isActive}
         />
-        {/* <p>{links[selectedLink.index].thumbnail}</p> */}
       </div>
     </motion.div>
   );

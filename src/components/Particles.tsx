@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "@/utils/mouse";
 import { cn } from "@/lib/utils";
+import { Circle } from "@/types";
 
 interface ParticlesProps {
   className?: string;
@@ -66,19 +67,6 @@ export default function Particles({
         mouse.current.y = y;
       }
     }
-  };
-
-  type Circle = {
-    x: number;
-    y: number;
-    translateX: number;
-    translateY: number;
-    size: number;
-    alpha: number;
-    targetAlpha: number;
-    dx: number;
-    dy: number;
-    magnetism: number;
   };
 
   const resizeCanvas = () => {
@@ -204,12 +192,8 @@ export default function Particles({
         circle.y < -circle.size ||
         circle.y > canvasSize.current.h + circle.size
       ) {
-        // remove the circle from the array
-        circles.current.splice(i, 1);
-        // create a new circle
-        const newCircle = circleParams();
-        drawCircle(newCircle);
-        // update the circle position
+        // Reuse the circle object and assign new parameters
+        Object.assign(circle, circleParams());
       } else {
         drawCircle(
           {

@@ -8,6 +8,7 @@ import React, {
   useState,
 } from "react";
 import { io, Socket } from "socket.io-client";
+
 import { generateRandomCursor } from "../lib/generate-random-cursor"
 
 export type User = {

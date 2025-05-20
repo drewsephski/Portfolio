@@ -1,12 +1,14 @@
 "use client";
 
 import { useInView } from "framer-motion";
-import React, { useRef } from "react";
-import { Button } from "../ui/button";
-import { SiGithub, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
-import { Linkedin } from "lucide-react";
-import { config } from "@/data/config";
 import Link from "next/link";
+import React, { useRef } from "react";
+import { SiGithub, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
+
+import { config } from "@/data/config";
+
+import { Button } from "../ui/button";
+
 
 const BUTTONS = [
   {

@@ -1,18 +1,20 @@
-import { cn } from "@/lib/utils";
+import { File } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
-import { File, Github, Linkedin } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { config } from "@/data/config";
+import { cn } from "@/lib/utils";
+
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLinkedin } from "react-icons/si";
-import { config } from "@/data/config";
+import { Button } from "../ui/button";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -83,7 +85,7 @@ const HeroSection = () => {
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
                   href={
-                    "https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing"
+                    "#"
                   }
                   target="_blank"
                   className="flex-1"
@@ -108,11 +110,11 @@ const HeroSection = () => {
                       </Link>
                     </TooltipTrigger>
                     <TooltipContent side="bottom">
-                      <p>pls 🥹 🙏</p>
+                      <p>💻🦎</p>
                     </TooltipContent>
                   </Tooltip>
                   <Link
-                    href={config.social.github}
+                    href={"#"}
                     target="_blank"
                   >
                     <Button variant={"outline"}>
@@ -120,7 +122,7 @@ const HeroSection = () => {
                     </Button>
                   </Link>
                   <Link
-                    href={config.social.linkedin}
+                    href={"#"}
                     target="_blank"
                   >
                     <Button variant={"outline"}>
