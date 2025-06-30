@@ -1,9 +1,14 @@
+"use client";
+
 import { FaLocationArrow } from "react-icons/fa6";
 import { Spotlight } from "./ui/Spotlight";
 import { socialMedia } from "@/data";
 import MagicButton from "./ui/MagicButton";
+import { motion, useReducedMotion } from "framer-motion";
 
 const Footer = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <footer className="w-full mb-[100px] md:mb-5 pb-10" id="contact">
       <div>
@@ -44,14 +49,16 @@ const Footer = () => {
 
         <div className="flex items-center md:gap-3 gap-6">
           {socialMedia.map((info) => (
-            <div
+            <motion.div
               key={info.id}
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
+              whileHover={shouldReduceMotion ? {} : { scale: 1.2, rotate: 8 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
             >
               <a href={info.link} target="_blank">
                 <img src={info.img} alt="icons" width={20} height={20} />
               </a>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

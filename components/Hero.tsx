@@ -7,11 +7,7 @@ import TypewriterEffect from "./ui/TypewriterEffect";
 const Hero = () => {
   const words = [
     {
-      text: "I",
-      className: "text-white dark:text-white",
-    },
-    {
-      text: "Research",
+      text: "Researching",
       className: "text-gradient-glass dark:text-white",  
     },
     {
@@ -19,7 +15,7 @@ const Hero = () => {
       className: "text-white dark:text-white",
     },
     {
-      text: "Develop",
+      text: "Developing",
       className: "text-gradient-glass dark:text-white",
     },
     {
@@ -39,7 +35,7 @@ const Hero = () => {
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
         />
-        <Spotlight className="top-10 left-full h-[80vh]" fill="purple" />
+        <Spotlight className="top-10 left-full h-[80vh]" fill="#00BFFF" />
         <Spotlight
           className="top-28 left-80 h-[80vh] w-[50vw]"
           fill="#87CEEB"

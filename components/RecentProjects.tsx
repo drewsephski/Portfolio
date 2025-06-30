@@ -3,19 +3,64 @@ import { projects } from "@/data";
 import React from "react";
 import { PinContainer } from "./ui/PinContainer";
 import { FaLocationArrow } from "react-icons/fa";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 
 
 const RecentProjects = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Each child animates with a 0.1 second delay
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const textRevealVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="py-10" id="projects">
-      <h1 className="heading bg-clip-text text-transparent bg-gradient-to-b from-white to-[#00BFFF] backdrop-filter backdrop-blur-lg bg-opacity-20">
-        A small selection of recent projects
-      </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-20 gap-y-2">
+      <div style={{ overflow: "hidden" }}>
+        <motion.h1
+          ref={ref}
+          className="heading bg-clip-text text-transparent bg-gradient-to-b from-white to-[#00BFFF] backdrop-filter backdrop-blur-lg bg-opacity-20"
+          variants={shouldReduceMotion ? {} : textRevealVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          A small selection of recent projects
+        </motion.h1>
+      </div>
+      <motion.div
+        className="flex flex-wrap items-center justify-center p-4 gap-x-20 gap-y-2"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {projects.map(({ id, title, des, img, iconLists, link }) => (
-          <div
+          <motion.div
             key={id}
             className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
+            variants={itemVariants}
           >
             <PinContainer title={link} href={link} >
               <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10 rounded-2xl">
@@ -82,9 +127,9 @@ const RecentProjects = () => {
                 </a>
               </div>
             </PinContainer>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

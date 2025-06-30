@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useEffect } from "react";
+import { motion, stagger, useAnimate, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const TypewriterEffect = ({
   words,
@@ -26,6 +26,9 @@ const TypewriterEffect = ({
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
+  const shouldReduceMotion = useReducedMotion();
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
   useEffect(() => {
     if (isInView) {
       animate(
@@ -39,10 +42,13 @@ const TypewriterEffect = ({
           duration: 0.3,
           delay: stagger(0.1),
           ease: "easeInOut",
+          onComplete: () => setIsTypingComplete(true), // Set state when typing is complete
         }
       );
+    } else {
+      setIsTypingComplete(false); // Reset state if not in view (e.g., scrolled away)
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (
@@ -77,23 +83,23 @@ const TypewriterEffect = ({
       )}
     >
       {renderWords()}
-      <motion.span
-        initial={{
-          opacity: 1,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-8 lg:h-12 bg-purple",
-          cursorClassName
-        )}
-      ></motion.span>
+      {!shouldReduceMotion && (
+        <motion.span
+          initial={{ opacity: 1 }}
+          animate={{
+            opacity: isTypingComplete ? 0 : [1, 0],
+          }}
+          transition={{
+            duration: isTypingComplete ? 0.8 : 0.8,
+            repeat: isTypingComplete ? 0 : Infinity,
+            repeatType: isTypingComplete ? undefined : "reverse",
+          }}
+          className={cn(
+            "inline-block rounded-sm w-[4px] h-4 md:h-8 lg:h-12 bg-purple",
+            cursorClassName
+          )}
+        ></motion.span>
+      )}
     </div>
   );
 };

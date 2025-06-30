@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -17,6 +17,8 @@ export const PinContainer = ({
   className?: string;
   containerClassName?: string;
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
@@ -29,18 +31,19 @@ export const PinContainer = ({
   };
 
   return (
-    <div
+    <motion.div
       className={cn(
         "relative group/pin z-50  cursor-pointer",
         containerClassName
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      //href={href || "/"}
       onClick={(event) => {
         event.preventDefault();
         window.open("https://" + href, "_blank");
       }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.03, y: -8, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div
         style={{
@@ -59,7 +62,7 @@ export const PinContainer = ({
         </div>
       </div>
       <PinPerspective title={title} href={href} />
-    </div>
+    </motion.div>
   );
 };
 

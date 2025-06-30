@@ -1,50 +1,22 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { MobileNavbar } from "@/components/MobileNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Drew Sepeczi | AI & Software Engineer",
-  description: "Portfolio of Drew Sepeczi - Software Developer and AI Researcher specializing in building intelligent systems and scalable applications.",
-  keywords: ["Drew Sepeczi", "AI Research", "Machine Learning", "Software Engineering", "Portfolio", "Full-Stack Development", "Artificial Intelligence"],
-  authors: [{ name: 'Drew Sepeczi' }],
-  creator: 'Drew Sepeczi',
-  publisher: 'Drew Sepeczi',
-  openGraph: {
-    title: 'Drew Sepeczi | AI & Software Engineer',
-    description: 'Portfolio of Drew Sepeczi - Software Developer and AI Researcher specializing in building intelligent systems and scalable applications.',
-    url: 'https://drewsepeczi.com',
-    siteName: 'Drew Sepeczi Portfolio',
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Drew Sepeczi | AI & Software Engineer',
-    description: 'Portfolio of Drew Sepeczi - Software Developer and AI Researcher',
-    creator: '@drewsepeczi',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -60,7 +32,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MobileNavbar />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={pathname}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 40 }}
+              animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+              exit={shouldReduceMotion ? {} : { opacity: 0, y: -40 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
           <ScrollToTopButton />
         </ThemeProvider>
       </body>
