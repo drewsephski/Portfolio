@@ -46,6 +46,8 @@ const AlertDialogOverlay = React.forwardRef<
 })
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
 
+// Replace the existing AlertDialogContent with this version
+
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
@@ -55,9 +57,9 @@ const AlertDialogContent = React.forwardRef<
   const animationProps = shouldReduceMotion
     ? {}
     : {
-        initial: { opacity: 0, y: 100 }, // Slide in from bottom
+        initial: { opacity: 0, y: 100 },
         animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: 100 }, // Slide out to bottom
+        exit: { opacity: 0, y: 100 },
         transition: { type: "spring", stiffness: 400, damping: 30 },
       };
 
@@ -66,24 +68,26 @@ const AlertDialogContent = React.forwardRef<
       <AnimatePresence>
         <motion.div
           key="alert-dialog-content"
-          ref={ref}
           className={cn(
             "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg sm:rounded-lg",
             className
           )}
           {...animationProps}
-          {...props} // Pass remaining props to motion.div
         >
-          {children}
-          <AlertDialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </AlertDialogPrimitive.Close>
+          <AlertDialogPrimitive.Content ref={ref} {...props}>
+            {children}
+            <AlertDialogCancel
+              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Close</span>
+            </AlertDialogCancel>
+          </AlertDialogPrimitive.Content>
         </motion.div>
       </AnimatePresence>
     </AlertDialogPortal>
   );
-})
+});
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 
 const AlertDialogHeader = ({
