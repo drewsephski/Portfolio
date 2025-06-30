@@ -57,9 +57,9 @@ const Hero = () => {
       <div className="flex justify-center relative my-20-z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <img
-            src="/blue-eye.png"
+            src="/drew-lucy.png"
             alt="profile-pic"
-            className="rounded-full w-80 h-80 border-2 border-white-100 mb-5"
+            className="rounded-full w-80 h-70 border-2 border-white-100 mb-5"
           />
           <h2 className="uppercase tracking-widest text-xs text-center text-gradient-glass max-w-80">
             Drew Sepeczi
