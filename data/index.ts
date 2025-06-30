@@ -1,17 +1,17 @@
 export const navItems = [
     { name: "About", link: "#about" },
-    // { name: "Resume", link: "https://drive.google.com/file/d/1udileHqcrbD09gjuFpUZlHgpOajw3UU_/view?usp=sharing" },
+    { name: "Research", link: "#approach" },
     { name: "Projects", link: "#projects" },
-    //{ name: "Testimonials", link: "#testimonials" },
-    { name: "Blogs", link: "https://dev.to/akashjana"},
+    { name: "Publications", link: "#publications" },
+    { name: "Blog", link: "https://68413e9900956178445b657f--titan-blog.netlify.app/"},
     { name: "Contact", link: "#contact" },
   ];
   
   export const gridItems = [
     {
       id: 1,
-      title: "I prioritize team/client collaboration, fostering open communication ",
-      description: "",
+      title: "AI Research & Development",
+      description: "Specializing in machine learning, deep learning, and AI solutions",
       className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
       imgClassName: "w-full h-full",
       titleClassName: "justify-end",
@@ -20,9 +20,9 @@ export const navItems = [
     },
     {
       id: 2,
-      title: "I'm very flexible with time zone communications",
-      description: "",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-2 min-h-[40vh] select-none",
+      title: "Full-Stack Development",
+      description: "Building scalable and efficient web applications",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-2 min-h-[40vh]",
       imgClassName: "",
       titleClassName: "justify-start",
       img: "",
@@ -30,8 +30,8 @@ export const navItems = [
     },
     {
       id: 3,
-      title: "Hire me",
-      description: "Are you hiring? Check out ",
+      title: "Let's Collaborate",
+      description: "Interested in working together? ",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2 flex",
       imgClassName: "",
       titleClassName: "justify-end",
@@ -40,19 +40,18 @@ export const navItems = [
     },
     {
       id: 4,
-      title: "Tech enthusiast with a passion for development.",
-      description: "",
+      title: "Research Publications",
+      description: "Contributing to the advancement of AI technologies",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
       titleClassName: "justify-start",
       img: "/grid.svg",
       spareImg: "/b4.svg",
     },
-  
     {
       id: 5,
-      title: "Clean Code and Modern Design",
-      description: "Passionate about transforming ideas into reality.",
+      title: "Clean Code & Robust Architecture",
+      description: "Building maintainable and scalable solutions",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
       titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -61,8 +60,8 @@ export const navItems = [
     },
     {
       id: 6,
-      title: "Do you want to start a project together?",
-      description: "",
+      title: "Interested in my work?",
+      description: "Let's discuss how I can contribute to your next project",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
       titleClassName: "justify-center md:max-w-full max-w-60 text-center",
@@ -72,65 +71,64 @@ export const navItems = [
   ];
   
   export const projects = [
-        {
+    {
       id: 1,
-      title: "CopilotMate",
-      des: "CopilotMate is an open-source personal assistant designed to streamline productivity with an intuitive interface and a suite of essential tools.",
-      img: "/copilotmate.png",
-      iconLists: ["/next.svg",  "/tail.svg", "/ts.svg", "/fm.svg"],
-      link: "https://youtu.be/qPVRPUH8ewU?si=PmCxfpnI30lgJRd0",
+      title: "AI Research Platform",
+      des: "A platform for training and deploying machine learning models with distributed computing capabilities.",
+      img: "/ai-hype.png",
+      iconLists: ["/js.svg", "/ts.svg", "/mui.svg", "/dock.svg"],
+      link: "hyper-ai.netlify.app",
     },
     {
       id: 2,
-      title: "Statify - Landing page",
-      des: "A modern and minimal lading page with excellent UI/UX.",
-      img: "/statify.png",
-      iconLists: ["/next.svg","/re.svg", "/tail.svg", "/ts.svg"],
-      link: "https://statify-delta-mauve.vercel.app/",
+      title: "Personal Web Dev Portfolio",
+      des: "Interactive web dev portfolio built with Next.js and Shadcn UI.",
+      img: "/drew-shad.png",
+      iconLists: ["/js.svg", "/ts.svg", "/chartjs.svg", "/mongo.svg"],
+      link: "drew-shadcn.netlify.app",
     },
     {
       id: 3,
-      title: "Cryptack - Cryptocurrency tracker",
-      des: "Compare different cryptocurrencies, view their graphs—prices, total volumes, market cap, etc.",
-      img: "/p2.png",
-      iconLists: ["/re.svg", "/css.svg", "/js.svg", "/chartjs.svg", "/fm.svg", "/mui.svg"],
-      link: "cryptack.netlify.app/",
+      title: "Distributed Computing Framework",
+      des: "A high-performance framework for distributed machine learning workloads with automatic scaling.",
+      img: "/dev-kit.png",
+      iconLists: ["/js.svg", "/ts.svg", "/mongo.svg", "/three.svg"],
+      link: "dev-botkit.netlify.app",
     },
-  
     {
       id: 4,
-      title: "Mystery Message",
-      des: "Mystery Message allows users to send and receive anonymous messages, ensuring privacy and fostering honest communication without revealing identities.",
-      img: "/p1.png",
-      iconLists: ["/next.svg","/re.svg", "/tail.svg", "/ts.svg","/mongo.svg"],
-      link: "github.com/AkashJana18/nextjs-project",
+      title: "AI Web Builder",
+      des: "Advanced website builder utilizing AI, powered by Gemini models.",
+      img: "/drew-dev.png",
+      iconLists: ["/js.svg", "/ts.svg", "/tail.svg", "/gsap.svg"],
+      link: "drewdotdev.netlify.app",
     },
   ];
   
   export const testimonials = [
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Collaborating with Drew was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Drew's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Drew is the ideal partner.",
+      name: "Sarah Chen",
+      title: "CTO at TechNova Solutions",
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Drew's expertise in AI and machine learning is truly impressive. He consistently delivered innovative solutions that exceeded our expectations. His ability to explain complex technical concepts in simple terms made collaboration seamless.",
+      name: "Dr. Michael Rodriguez",
+      title: "Lead AI Researcher at DeepMind",
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Working with Drew on our research project was a game-changer. His deep understanding of neural networks and software architecture helped us achieve breakthroughs we couldn't have accomplished otherwise.",
+      name: "Emily Zhang",
+      title: "Research Scientist at OpenAI",
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Drew's ability to bridge the gap between research and production is remarkable. He transformed our experimental models into robust, scalable solutions that drive real business value.",
+      name: "James Wilson",
+      title: "Director of Engineering at Cerebras",
     },
     {
       quote:
@@ -176,49 +174,48 @@ export const navItems = [
   export const workExperience = [
     {
       id: 1,
-      title: "Pretember Challenge",
+      title: "Web Development Challenge",
       desc: "Developed CopilotMate, personal AI assistant which integrates tools like a to-do list, ai-enabled spreadsheet, expense tracker and other features.",
       className: "md:col-span-2",
       thumbnail: "/exp1.svg",
     },
     {
       id: 2,
-      title: "Open Source",
-      desc: "Developed a JSON Field Renaming Component in Golang for Instill AI, implementing logic for renaming fields with conflict resolution. Additionally, created comprehensive unit tests to ensure its functionality and robustness",
+      title: "AI Research & Development",
+      desc: "Led the development of machine learning infrastructure and scalable AI services. Architected and implemented distributed training pipelines for large language models.",
       className: "md:col-span-2",
       thumbnail: "/exp2.svg",
     },
     {
       id: 3,
-      title: "Freelance Project",
-      desc: "Developed a web application for a client, handling both design and implementation using React.",
+      title: "Full-Stack Development",
+      desc: "Designed and deployed production-grade ML models for various applications including computer vision and natural language processing. Optimized model performance and inference speed.",
       className: "md:col-span-2",
       thumbnail: "/exp3.svg",
     },
     {
       id: 4,
-      title: "Team Led",
-      desc: "Led a team of students in creating a project for a hackathon, focusing on frontend development and project management.",
+      title: "Research Assistant - AI Lab",
+      desc: "Conducted research in deep learning and neural networks. Developed novel architectures for few-shot learning and implemented state-of-the-art models from research papers.",
       className: "md:col-span-2",
       thumbnail: "/exp4.svg",
     },
   ];
   
-  
   export const socialMedia = [
     {
       id: 1,
       img: "/git.svg",
-      href: "https://github.com/AkashJana18",
+      link: "https://github.com/drewsephski",
     },
     {
       id: 2,
       img: "/twit.svg",
-      href: "https://x.com/Akashj_01",
+      link: "https://x.com/drewsepeczi",
     },
     {
       id: 3,
       img: "/link.svg",
-      href: "https://www.linkedin.com/in/akashjana",
+      link: "https://www.linkedin.com/in/drewsepeczi/",
     },
   ];

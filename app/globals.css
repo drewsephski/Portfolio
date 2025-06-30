@@ -47,7 +47,7 @@
     }
     
     ::-webkit-scrollbar-thumb {
-      background: #cbacf9;
+      background: #00BFFF;
       border-radius: 3rem;
     }
 
@@ -108,6 +108,10 @@
   }
 
   .black-gradient {
-    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+    background: linear-gradient(90deg, #09f 0%, #00BFFF 100%);
+  }
+
+  .text-gradient-glass {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-[#00BFFF] backdrop-filter backdrop-blur-lg bg-opacity-20;
   }
 }

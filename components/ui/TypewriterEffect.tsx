@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
 import { useEffect } from "react";
 
-export const TypewriterEffect = ({
+const TypewriterEffect = ({
   words,
   className,
   cursorClassName,
@@ -55,7 +55,7 @@ export const TypewriterEffect = ({
                   initial={{}}
                   key={`char-${index}`}
                   className={cn(
-                    `dark:text-white text-black opacity-0 hidden`,
+                    `dark:text-white text-[#00BFFF] opacity-0 hidden`,
                     word.className
                   )}
                 >
@@ -98,6 +98,8 @@ export const TypewriterEffect = ({
   );
 };
 
+export default TypewriterEffect;
+
 export const TypewriterEffectSmooth = ({
   words,
   className,
@@ -126,7 +128,7 @@ export const TypewriterEffectSmooth = ({
               {word.text.map((char, index) => (
                 <span
                   key={`char-${index}`}
-                  className={cn(`dark:text-white text-black `, word.className)}
+                  className={cn(`dark:text-white text-[#00BFFF] `, word.className)}
                 >
                   {char}
                 </span>

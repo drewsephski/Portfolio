@@ -65,7 +65,7 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "akashjana663@gmail.com";
+    const text = "drewsepeczi@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
@@ -116,23 +116,24 @@ export const BentoGridItem = ({
           {id === 6 && (
             // add background animation , remove the p tag
             <BackgroundGradientAnimation>
-              <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+              <div className="absolute z-50 inset-0 flex items-center justify-center font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
             </BackgroundGradientAnimation>
           )}
 
           <div
             className={cn(
               titleClassName,
-              "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+              "text-gradient-glass group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
             )}
           >
             {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
-            <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+            <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-white z-10">
               {description}
             </div>
 
+            {/* change the font color */}
             <div
-              className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
+              className={`text-gradient-glass font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
             >
               {title}
             </div>
@@ -152,14 +153,14 @@ export const BentoGridItem = ({
                 />
                 <div className="flex gap-4">
                   <a
-                    href="https://drive.google.com/file/d/1udileHqcrbD09gjuFpUZlHgpOajw3UU_/view?usp=sharing"
+                    href="https://docs.google.com/document/d/e/2PACX-1vQOOxielP1uVwLcD0538JZY_AEb_3QFbR5l1ByY53E7uqHDCuJ7z4gK4ukHC5EPEv17kD9x3J6kgRun/pub"
                     target="_blank"
                   >
                     <div className="z-10">
                       <LitupButton name="View Resume" />
                     </div>
                   </a>
-                  <a href="https://contra.com/akash_jana" target="_blank">
+                  <a href="#contact">
                     <div className="z-10">
                       <LitupButton name="Freelance" />
                     </div>

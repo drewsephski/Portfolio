@@ -11,7 +11,7 @@ import { navItems } from "@/data";
 
 export default function Home() {
   return (
-    <main className="bg-black-100 relative flex justify-center items-center flex-col overflow-clip mx-auto sm:px-10 px-5">
+    <main id="main-content" className="bg-black-100 relative flex justify-center items-center flex-col overflow-clip mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
         <FloatingNav 
         navItems={navItems} />
@@ -19,7 +19,7 @@ export default function Home() {
         <Grid />
         <Skills />
         <RecentProjects />
-        {/* <Client /> */}
+        <Client />
         <Experience />
         <Approach />
         <Footer />
